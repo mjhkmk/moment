@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: black;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: Input serif;
+  font-size: 20px;
+}
+
+</style>
+</head>
+<body>
+
+<h1><img id ="title" src ="logo.png" style="margin-top:3%"/></h1>
+
+<div style="text-align:center">
+<p style ="
+color:white;
+font-family: Input serif;
+font-style:normal;
+font-size:18px;
+line-height:8px;
+text-align:center"id = "clock">
+</p>
+</div>
+
+<div style="text-align:center">
+<div style="position:absolute">
+	<div style="position: relative; top: 160px; left: 101%;">
+		<img id = "monthImg" src ="red.png"/>
+	</div>
+</div>
+<div style="position:absolute">
+	<div style="position: relative; top: 160px; left: 272%;">
+		<img id = "minutesImg" src ="pink.png"/>
+	</div>
+</div>
+<div style="position:absolute">
+	<div style="position: relative; top: 160px; left: 158%;">
+		<img id = "dateImg" src ="pink.png"/>
+	</div>
+</div>
+<div style="position:absolute">
+	<div style="position: relative; top: 160px; left: 215%;">
+		<img id = "hourImg" src ="yellow.png"/>
+	</div>
+</div>
+
+<div style="position:absolute">
+	<div style="position: relative; top: 160px; left: 329%;">
+		<img id = "secondsImg" src ="red.png"/>
+	</div>
+</div>
+</div>
+<div style="text-align:center; margin-top: 650px;">
+<p style ="
+color:white;
+font-family: Input serif;
+font-style:normal;
+font-size:17.5px;
+line-height:25px;
+text-align:center"id = "comment">
+Life is unimaginable every moment.<br/>
+That is why life is incredible.
+</p></div>
+<div style="text-align:right;">
+	<a href="goNextPage();"><img src="button.png" alt=""></a>
+</div>
+<script src="https://code.jquery.com/jquery-2.2.1.js"></script>
+<script Language = "javascript">
+	function goNextPage(){
+		window.open("movie.html", "PopupWin", "width=500,height=600");
+	}
+
+	function f_clock(){
+    	var dt = new Date();
+        var month = dt.getMonth()+1;
+		var showMonth = month;
+		var showDate = date;
+		if(showMonth < 10 ){
+			showMonth = "0"+month;
+		};
+
+
+        var date = dt.getDate();
+		var showDate = date;
+		if(showDate < 10){
+			showDate = "0"+date;
+		};
+        var day = dt.getDay();
+
+        var week = ["Sun","Mon","Tue","Wed","Thr","Fri","Sat"];
+
+        var hours = dt.getHours();
+		var showhours = hours;
+        if(showhours < 10){
+			showhours = "0"+hours;
+		};
+        var minutes = dt.getMinutes();
+		var showminutes = minutes;
+        if(showminutes < 10){
+			showminutes = "0"+minutes;
+		};
+        var seconds = dt.getSeconds();
+
+		var showseconds = seconds;
+        if(showseconds < 10){
+			showseconds = "0"+seconds;
+		};
+
+
+		var milliseconds = dt.getMilliseconds();
+
+        var monthAngle = month * 30;
+        var dateAngle = date * 12;
+        if(month == "1" || month == "3" || month == "5" || month == "7" || month == "8" || month =="10" || month =="12"){
+        	dateAngle = date * 11.6;
+ 		};
+
+        var hoursAngle = hours * 30;
+        var minutesAngle = minutes * 6;
+        var secondsAngle = seconds * 6;
+
+
+        document.getElementById("clock").innerHTML = (showMonth)+"M "+showDate+"D"+" "+showhours+": "+showminutes+": "+showseconds;
+
+	    var monthSet = "rotate("+monthAngle+"deg)";
+		$("#monthImg").css({'transform': monthSet});
+
+		var dateSet = "rotate("+dateAngle+"deg)";
+		$("#dateImg").css({'transform': dateSet});
+
+		var hourSet = "rotate("+hoursAngle+"deg)";
+		$("#hourImg").css({'transform': hourSet});
+
+	    var minutesSet = "rotate("+minutesAngle+"deg)";
+		$("#minutesImg").css({'transform': minutesSet});
+
+		var secondsSet = "rotate("+secondsAngle+"deg)";
+		$("#secondsImg").css({'transform': secondsSet});
+		//document.getElementById("a").innerHTML = monthAngle;
+		//document.getElementById("s").innerHTML = dateAngle;
+		//document.getElementById("d").innerHTML = hourAngle;
+		//document.getElementById("f").innerHTML = minuteAngle;
+		//document.getElementById("g").innerHTML = secondAngle;
+        }
+
+        f_clock();
+
+        setInterval(f_clock,1000);
+
+</script>
+</body>
+</html>
